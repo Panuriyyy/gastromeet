@@ -436,6 +436,137 @@
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
   .section-head { max-width: 640px; }
   .w-full { width: 100%; }
+
+  /* ─── MOBILE MENU ────────────────────────── */
+  .hamburger {
+    display: none; flex-direction: column; justify-content: center;
+    gap: 5px; width: 36px; height: 36px; cursor: pointer;
+    background: none; border: none; padding: 4px; flex-shrink: 0;
+  }
+  .hamburger span {
+    display: block; height: 2px; background: var(--navy);
+    border-radius: 2px; transition: all .25s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+    background: rgba(232,229,224,.98); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--navy-10);
+    flex-direction: column; padding: 16px 24px 24px;
+    box-shadow: 0 8px 32px rgba(33,41,86,.12);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--text-main);
+    border-bottom: 1px solid var(--navy-10);
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu .mob-cta {
+    margin-top: 16px; text-align: center; background: var(--navy);
+    color: white; border-radius: 40px; padding: 14px;
+    font-size: 16px; font-weight: 700;
+  }
+
+  /* ─── TABLET (≤1024px) ───────────────────── */
+  @media (max-width: 1024px) {
+    .container { padding: 0 32px; }
+    .hero-grid { gap: 32px; }
+    .form-demo-wrap { gap: 32px; }
+    .rest-grid { grid-template-columns: repeat(2, 1fr); }
+    .problem-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ─── MOBILE (≤768px) ────────────────────── */
+  @media (max-width: 768px) {
+    /* Layout */
+    .container { padding: 0 20px; }
+    section { padding: 64px 0; }
+    #cta { padding: 64px 20px; }
+
+    /* Nav */
+    .nav-inner { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+
+    /* Hero */
+    #hero { padding: 48px 0 0; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-left { padding-bottom: 0; }
+    .h1 { font-size: 36px; }
+    .h2 { font-size: 28px; }
+    .hero-ctas { flex-direction: column; }
+    .hero-ctas .btn { width: 100%; justify-content: center; }
+    .hero-product { border-radius: var(--radius-lg); margin-top: 0; }
+
+    /* Slot mini-grid in hero: make scrollable */
+    .slot-grid-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .slot-grid { min-width: 480px; }
+
+    /* Problem */
+    .problem-grid { grid-template-columns: 1fr; gap: 16px; }
+    .problem-card { padding: 20px; }
+
+    /* How it works — prose already fine, just tighten */
+    #how .container > div:last-child p { font-size: 16px; }
+
+    /* Form demo */
+    .form-demo-wrap { grid-template-columns: 1fr; gap: 24px; }
+    .form-panel { padding: 24px; }
+    .budget-row { flex-wrap: wrap; }
+    .budget-opt { min-width: calc(50% - 4px); }
+    .invite-panel { gap: 16px; }
+    .invite-info { padding: 24px; }
+    .invite-info h3 { font-size: 18px; }
+
+    /* Full slot demo */
+    .full-slot-wrap { border-radius: var(--radius-md); }
+    .slot-demo-header { padding: 16px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .slot-demo-body { padding: 20px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .full-slot-grid { min-width: 680px; }
+    .legend { gap: 12px; }
+
+    /* Restaurants */
+    .rest-grid { grid-template-columns: 1fr; gap: 16px; }
+    .filters-bar { gap: 8px; }
+
+    /* Result bar */
+    #restaurants .container > div:last-child {
+      flex-direction: column; gap: 20px; padding: 24px;
+    }
+    #restaurants .container > div:last-child > div:last-child {
+      flex-direction: column; width: 100%;
+    }
+    #restaurants .container > div:last-child .btn { width: 100%; justify-content: center; }
+
+    /* CTA */
+    .email-form { flex-direction: column; }
+    .email-input { border-radius: var(--radius-md); }
+    .email-form .btn { border-radius: var(--radius-md); justify-content: center; }
+
+    /* Footer */
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px 20px; }
+
+    /* Section head */
+    .section-head { max-width: 100%; }
+
+    /* Heatmap note */
+    .heatmap-note { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+    /* Misc inline grids */
+    .hero-proof { flex-wrap: wrap; }
+  }
+
+  /* ─── SMALL MOBILE (≤380px) ─────────────── */
+  @media (max-width: 380px) {
+    .h1 { font-size: 30px; }
+    .h2 { font-size: 24px; }
+    .body-lg { font-size: 16px; }
+    .btn { padding: 12px 20px; font-size: 14px; }
+  }
 </style>
 </head>
 <body>
@@ -445,14 +576,41 @@
   <div class="nav-inner">
     <div class="logo">Gastro<span>Meet</span></div>
     <div class="nav-links">
-      <a href="#problem">Проблема</a>
       <a href="#how">Как это работает</a>
       <a href="#schedule">Выбор слотов</a>
       <a href="#restaurants">Рестораны</a>
     </div>
     <a href="#cta" class="nav-cta">Попробовать</a>
+    <button class="hamburger" id="hamburger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- ─── MOBILE MENU ───────────────────────── -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#how" onclick="closeMenu()">Как это работает</a>
+  <a href="#schedule" onclick="closeMenu()">Выбор слотов</a>
+  <a href="#restaurants" onclick="closeMenu()">Рестораны</a>
+  <a href="#cta" class="mob-cta" onclick="closeMenu()">Попробовать</a>
+</div>
+
+<script>
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  function closeMenu() {
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+  }
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) closeMenu();
+  });
+</script>
 
 <!-- ─── HERO ───────────────────────────────── -->
 <section id="hero">
